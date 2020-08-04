@@ -1,0 +1,54 @@
+{% extends 'base.html' %}    
+
+
+ {% block title %}register{% endblock title %} 
+
+    {% block content %}
+    <div class="col-md-4 col-md-offset-4" id="login">
+        <section id="inner-wrapper" class="login">
+            <article>
+                <form  action="{% url 'accounts:register' %} " method="POST" >
+            {% csrf_token %}
+                    <div class="form-group">
+                        <div class="input-group">
+                            {{ registration_form.username}}
+                            <span class="input-group-addon"><i class="fa fa-user"> </i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            {{ registration_form.email}}
+
+                            <span class="input-group-addon"><i class="fa fa-envelope"> </i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group"  >
+                            {{ registration_form.password1}}
+
+                            <span class="input-group-addon"><i class="fa fa-key"> </i></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            {{ registration_form.password2}}
+                            <span class="input-group-addon"><i class="fa fa-key"> </i></span>
+                        </div>
+                    </div>
+                      <button type="submit"  class="btn btn-success btn-block">Submit</button>
+                </form>
+                <div id="formFooter">
+                    <a class="underlineHover" href="{% url 'accounts:login' %}"  >Already have an account?</a>
+                  </div>
+            </article>
+        </section></div>
+        <script type="text/javascript" > 
+           const pwd1 = document.getElementById('id_password1');
+           pwd1.setAttribute('placeholder','password')
+           .setAttribute('class','form-control');
+           const pwd2 = document.getElementById('id_password2');
+           pwd2.setAttribute('placeholder','confirme password')
+           .setAttribute('class','form-control');
+
+        </script>
+            {% endblock content %}
