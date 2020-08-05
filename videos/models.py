@@ -21,10 +21,13 @@ class Video(models.Model):
      
     title=models.CharField( max_length=50)
     description=models.TextField(blank=True)
-    url=models.URLField( max_length=200)
+    url= models.FileField(upload_to='deploy/videos/%Y/%m/%d/', max_length = 100,null=True)
     date=models.DateField(auto_now=True)
     comments=models.ForeignKey(Comment, default=True,on_delete=models.CASCADE,blank=True)
     owner = models.ForeignKey(User, on_delete=models.CASCADE,default=None,null=False)
     likes = models.IntegerField(default=0)
     def __str__(self):
         return self.title
+    
+    def get_absolute_url(self):
+        return reverse ("deploy:detail", kwargs={"slug":self.slug})

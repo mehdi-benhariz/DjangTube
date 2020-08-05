@@ -20,7 +20,10 @@
 </head>
 
 <body>
-    
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+ src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&autoLogAppEvents=1&version=v8.0&appId=1856456047811697" 
+ nonce="ZTU51XBq"></script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -32,11 +35,17 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
         crossorigin="anonymous"></script>
-
+<!-- navbar-->
         <nav class="navbar navbar-dark bg-primary"  >
             <div style="display: inline-flex;"  >
         <a href="/videos/" > <h3 style="color: aliceblue; " >Djan-Tube</h3></a>
-        
+
+        <form class="form-inline my-2 my-lg-0" id="search" method="GET" >
+            <input class="form-control mr-sm-2" type="search"
+             placeholder="Search" aria-label="Search" name="q" value="{{request.GET.q}}" >
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+          </form>
+
         <a href="{% url 'accounts:logout' %}" > 
             <input style="position: absolute; left: 90%; top :8px"
              type="submit" class="btn btn-info" value="logout"  />

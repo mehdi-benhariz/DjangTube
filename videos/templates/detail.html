@@ -2,21 +2,27 @@
 {% block title %}video:{{instance.title}} {% endblock title %}
 
 {% block content %}
+{% load static %}
 
 <video name='{{instance.title}}' controls autoplay width='80%' height='40%'>
-    <source src="{{video.url}}/sample.mp4" type="video/mp4"></source>
-    </video>      
+    <source src="{% static 'deploy/instance.url' %}" type='video/mp4'>   
+     </video>      
     <h2 style="padding-left: 10px;" >{{instance.title}} </h2>
     <p>{{instance.description}} </p>
     <a href="{% url 'videos:like'  instance.id   %}" style="padding-left: 10px;" >
         <span class="badge badge-pill badge-success">likes: {{instance.likes}} </span>
    </a> 
 
+   <div class="fb-comments" 
+   data-href="{{request.build_absolute_url}} "
+    data-numposts="5" data-width=""></div>
+
+
    <div id="comment-section" >
        <form method="POST" >
         {% csrf_token %}
         {{ comment_form }}
-        <button type="submit" name="addComment" class="btn btn-success" >Submit</button>    
+        <button type="submit" name="addComment" class="btn btn-success"  >Submit</button>    
        </form>
     {% for comment in comment_list %}
         <h4 id="comment" >{{comment.writer}} ||{{comment.date}} </h4>

@@ -8,7 +8,7 @@
  <div class="card col-sm-3" style="width: 10rem;">
     <div class="card-body">
         <video name='demo' controls autoplay width='70%' height='40%'>
-            <source src="{{video.url}}/sample.mp4" type="video/mp4"></source>
+            <source src="deploy/{{video.url}}" type="video/mp4"></source>
             </video>      
            <a href="{% url 'videos:detail' video.id %}" ><h5 class="card-title">{{video.title}}</h5> </a> 
       <h6 class="card-subtitle mb-2 text-muted">{{video.description}} </h6>

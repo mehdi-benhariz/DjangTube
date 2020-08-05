@@ -109,3 +109,18 @@ video{
  .form-control{
      width: 90%;
  } 
+
+ .form2{
+    margin: .7em;
+    padding: .2em;
+    width: 50%;
+    height: 270px;
+    display:inline-block;
+    box-shadow:1px 1px 1px 1px rgb(177, 175, 175) ;     
+ }
+#search{
+    padding:10px;
+    position: fixed;
+    left: 360px;
+    top: 3px;
+}

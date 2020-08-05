@@ -5,4 +5,31 @@
 {% block content %}
   
 <h2 id="profile"  >Profile:</h2>
+<form method="POST" enctype="multipart/form-data" id="form2" > 
+ {% csrf_token %}
+ {{ video_form }}
+ <input type="submit" class="btn btn-primary" style="padding-top: 10px;" />
+</form>
+
+<div>{{request.user}} those are your videos : </div>
+{% for vid in my_video %}
+<div class="card border-info mb-3" 
+style="width: 20rem; max-width: 30rem; padding: .9em;  height: 200px;">
+    <div class="card-header">{{vid.title}} </div>
+    <div class="card-body text-info">
+      <h5 class="card-title">{{vid.date}} </h5>
+      <p class="card-text" >{{vid.description}}.
+        <span class="badge badge-pill badge-success">likes:{{vid.likes}} </span>
+        <br/>
+        <a href="{% url 'videos:update' vid.id %}" >
+            <button type="button" class="btn btn-outline-warning">Update</button>
+        </a>
+        <a href="{% url 'videos:delete' vid.id %}" >
+            <button type="button" class="btn btn-outline-danger">Delete</button>
+        </a>
+      </p>
+    </div>
+  </div>
+{% endfor %}
+
 {% endblock content %}
